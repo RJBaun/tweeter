@@ -7,7 +7,7 @@
 .tweet-body {
   display: flex;
   flex-direction: column;
-  border-bottom: 3px solid black;
+  border-bottom: 4px solid black;
 
 }
 
