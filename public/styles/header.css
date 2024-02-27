@@ -1,0 +1,11 @@
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 520px;
+  width: 100vw;
+  background-color: #008a09;
+  background-image: url("https://www.transparenttextures.com/patterns/football-no-lines.png");
+  color: white;
+}

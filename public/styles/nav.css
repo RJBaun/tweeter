@@ -1,0 +1,40 @@
+nav span {
+  font-size: 45px;
+}
+
+nav {
+  height: 120px;
+  width: 100vw;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Bungee", sans-serif;
+  position: fixed;
+}
+
+nav i {
+  font-size: 18px;
+  margin-bottom: 2em;
+  color: red;
+}
+
+nav #newTweet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Source Sans 3", sans-serif;
+  margin: 0em;
+  font-weight: 300;
+}
+
+nav #newTweet span {
+  font-weight: 600;
+  font-size: 24px;
+}
