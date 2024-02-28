@@ -44,21 +44,18 @@ $(document).ready(function() {
 
     tweetText = event.target.elements['text'].value;
 
-    if(tweetText.trim() === '') {
-      alert("Your tweet is empty!")
-    } else if (tweetText.length > 140) {
-      alert("Maximum characters exceeded")
-    } else {
-    $.ajax({
-      url:'http://localhost:8080/tweets/',
-      method: 'POST',
-      data: formData
-    })
-    .then(loadTweets())
-    .catch((err) => {
-      console.log('Error: ', err)
-    })
-    $(this).trigger('reset');
+    if(tweetIsValid(tweetText)){
+      $.ajax({
+        url:'http://localhost:8080/tweets/',
+        method: 'POST',
+        data: formData
+      })
+      .then((res) => {
+        $(this).trigger('reset');
+        loadTweets()})
+      .catch((err) => {
+        console.log('Error: ', err)
+      })
     }
   });
 
@@ -73,9 +70,21 @@ $(document).ready(function() {
     })
     .catch((err) => {
       console.log('error: ', err);
-      res.status(404).send(err);
     })
   }
+
+  const tweetIsValid = (tweetText) => {
+    if(tweetText.trim() === '') {
+      alert("Your tweet is empty!");
+      return false;
+    } else if (tweetText.trim().length > 140) {
+      alert("Maximum characters exceeded")
+      return false;
+    }
+    return true;
+  }
+
+
 loadTweets();
 
 
