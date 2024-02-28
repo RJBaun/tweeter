@@ -29,7 +29,13 @@ article.tweet header {
  }
 
  article.tweet .poster {
+  display: flex;
+  align-items: center;
    font-weight: 200;
+ }
+
+ article.tweet img {
+  height: 1.5em;
  }
 
  article.tweet .tweet-body {
@@ -53,6 +59,7 @@ article.tweet header {
 
  article.tweet footer i:hover {
    color:goldenrod;
+   transition-duration: 0.3s;
  }
 
  
