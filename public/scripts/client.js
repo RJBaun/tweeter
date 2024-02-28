@@ -30,17 +30,25 @@ $(document).ready(function() {
   return $tweet;
   }
 
+  // renders tweets on the page using the markup function
   const renderTweets = (tweets) => {
     for (const tweet of tweets) {
         $("#tweets-container").prepend(createTweetMarkup(tweet));
       };
     }
 
-
+    // handles new twett submissions
   $('#newTweet').submit(function(event) {
     event.preventDefault();
     formData = $(this).serialize();
 
+    tweetText = event.target.elements['text'].value;
+
+    if(tweetText.trim() === '') {
+      alert("Your tweet is empty!")
+    } else if (tweetText.length > 140) {
+      alert("Maximum characters exceeded")
+    } else {
     $.ajax({
       url:'http://localhost:8080/tweets/',
       method: 'POST',
@@ -50,8 +58,11 @@ $(document).ready(function() {
     .catch((err) => {
       console.log('Error: ', err)
     })
+    $(this).trigger('reset');
+    }
   });
 
+  // loads existing tweets
   const loadTweets = () => {
     $.ajax({
       url: 'http://localhost:8080/tweets',
@@ -61,7 +72,8 @@ $(document).ready(function() {
       renderTweets(res);
     })
     .catch((err) => {
-      console.log('error: ', err)
+      console.log('error: ', err);
+      res.status(404).send(err);
     })
   }
 loadTweets();
