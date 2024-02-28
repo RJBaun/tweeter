@@ -6,9 +6,9 @@
 $(document).ready(function() {
 
 
-
+  // formats tweet into html 
   const createTweetMarkup = (tweet) => {
-    let $tweet = `
+    let $tweet = $(`
     <article class="tweet">
     <header>
       <div class="poster">
@@ -26,15 +26,44 @@ $(document).ready(function() {
         <i class="fa-solid fa-heart"></i>
       </span>
     </footer>
-  </article>`;
+  </article>
+  `);
+  $tweet.find('.tweet-body').text(tweet.content.text);
   return $tweet;
-  }
+}
 
-  // renders tweets on the page using the markup function
+// confirms tweet meets length criteria
+const tweetIsValid = (tweetText) => {
+  if(tweetText.trim() === '') {
+    alert("Your tweet is empty!");
+    return false;
+  } else if (tweetText.trim().length > 140) {
+    alert("Maximum characters exceeded")
+    return false;
+  }
+  return true;
+}
+ 
+// renders tweets on the page using the markup function
   const renderTweets = (tweets) => {
+    $("#tweets-container").empty();
     for (const tweet of tweets) {
         $("#tweets-container").prepend(createTweetMarkup(tweet));
       };
+    }
+    
+    // loads existing tweets
+    const loadTweets = () => {
+      $.ajax({
+        url: 'http://localhost:8080/tweets',
+        method: 'GET'
+      })
+      .then((res) => {
+        renderTweets(res);
+      })
+      .catch((err) => {
+        console.log('error: ', err);
+      })
     }
 
     // handles new twett submissions
@@ -59,30 +88,7 @@ $(document).ready(function() {
     }
   });
 
-  // loads existing tweets
-  const loadTweets = () => {
-    $.ajax({
-      url: 'http://localhost:8080/tweets',
-      method: 'GET'
-    })
-    .then((res) => {
-      renderTweets(res);
-    })
-    .catch((err) => {
-      console.log('error: ', err);
-    })
-  }
 
-  const tweetIsValid = (tweetText) => {
-    if(tweetText.trim() === '') {
-      alert("Your tweet is empty!");
-      return false;
-    } else if (tweetText.trim().length > 140) {
-      alert("Maximum characters exceeded")
-      return false;
-    }
-    return true;
-  }
 
 
 loadTweets();
