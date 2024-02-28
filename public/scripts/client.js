@@ -5,32 +5,9 @@
  */
 $(document).ready(function() {
 
-  const tweetData = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1708906976028
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1708993376028
-    }
-  ]
 
-  const createTweetElement = (tweet) => {
+
+  const createTweetMarkup = (tweet) => {
     let $tweet = `
     <article class="tweet">
     <header>
@@ -42,7 +19,7 @@ $(document).ready(function() {
     </header>
     <span class="tweet-body">${tweet.content.text}</span>
     <footer>
-      <span>${tweet.created_at}</span>
+      <span>${timeago.format(tweet.created_at)}</span>
       <span class="icons">
         <i class="fa-solid fa-flag"></i>
         <i class="fa-solid fa-retweet"></i>
@@ -55,11 +32,9 @@ $(document).ready(function() {
 
   const renderTweets = (tweets) => {
     for (const tweet of tweets) {
-
-        $("#tweets-container").append(createTweetElement(tweet));
+        $("#tweets-container").prepend(createTweetMarkup(tweet));
       };
     }
-    renderTweets(tweetData);
 
 
   $('#newTweet').submit(function(event) {
@@ -71,9 +46,25 @@ $(document).ready(function() {
       method: 'POST',
       data: formData
     })
-    .then(console.log(formData))
+    .then(loadTweets())
+    .catch((err) => {
+      console.log('Error: ', err)
+    })
   });
 
+  const loadTweets = () => {
+    $.ajax({
+      url: 'http://localhost:8080/tweets',
+      method: 'GET'
+    })
+    .then((res) => {
+      renderTweets(res);
+    })
+    .catch((err) => {
+      console.log('error: ', err)
+    })
+  }
+loadTweets();
 
 
 });
