@@ -24,17 +24,36 @@ nav i {
   color: red;
 }
 
-nav #newTweet {
+nav #writeNewTweet {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: "Source Sans 3", sans-serif;
-  margin: 0em;
+  margin: 0;
+  padding: 0;
   font-weight: 300;
 }
 
-nav #newTweet span {
+nav #writeNewTweet span {
   font-weight: 600;
   font-size: 24px;
+}
+
+nav #writeNewTweet p {
+  margin: 0.5em;
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: 90px;
+  padding-bottom: 1em;
+  cursor: pointer;
 }

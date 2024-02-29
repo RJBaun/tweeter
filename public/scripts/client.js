@@ -32,7 +32,7 @@ $(document).ready(function() {
   return $tweet;
 }
 
-// confirms tweet meets length criteria
+// confirms tweet meets length criteria and populates error if not
 const tweetIsValid = (tweetText) => {
   if(tweetText.trim() === '') {
     $('#tweet-error').html('<i class="fa-solid fa-triangle-exclamation"></i>&nbsp;&nbsp;Text field is empty!&nbsp;&nbsp;<i class="fa-solid fa-triangle-exclamation"></i>')
@@ -91,6 +91,17 @@ const tweetIsValid = (tweetText) => {
   });
 
 
+  const toggleNewTweet = () => {
+    const newTweetSection = $('#new-tweet');
+    if (newTweetSection.css('display') === 'none') {
+      newTweetSection.slideDown();
+    } else {
+      newTweetSection.slideUp();
+    }
+  }
+
+
+  $('#tweet-dropdown').click(toggleNewTweet)
 
 
 loadTweets();
