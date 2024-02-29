@@ -35,10 +35,12 @@ $(document).ready(function() {
 // confirms tweet meets length criteria
 const tweetIsValid = (tweetText) => {
   if(tweetText.trim() === '') {
-    alert("Your tweet is empty!");
+    $('#tweet-error').html('<i class="fa-solid fa-triangle-exclamation"></i>&nbsp;&nbsp;Text field is empty!&nbsp;&nbsp;<i class="fa-solid fa-triangle-exclamation"></i>')
+    $('#tweet-error').slideDown(500);
     return false;
   } else if (tweetText.trim().length > 140) {
-    alert("Maximum characters exceeded")
+    $('#tweet-error').html('<i class="fa-solid fa-triangle-exclamation"></i>&nbsp;&nbsp;Maximum number of charaters exceeded!&nbsp;&nbsp;<i class="fa-solid fa-triangle-exclamation"></i>')
+    $('#tweet-error').slideDown(500);
     return false;
   }
   return true;

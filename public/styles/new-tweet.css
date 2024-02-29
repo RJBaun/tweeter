@@ -1,4 +1,4 @@
-#new-tweet {
+#newTweet {
   width: 90vw;
   margin-left: auto;
   margin-right: auto;
@@ -11,7 +11,7 @@
 
 }
 
-#new-tweet button {
+#newTweet button {
   background-color: #4056A1;
   color: #FFFFFF;
   font-family: Bungee, sans-serif;
@@ -37,4 +37,16 @@
 
 .tweet-details .counter.invalid {
   color: red;
+}
+
+.tweet-error {
+  border: 3px solid red;
+  color: red;
+  display: flex;
+  justify-content: center;
+  max-width: fit-content;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em
 }
