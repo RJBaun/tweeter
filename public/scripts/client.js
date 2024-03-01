@@ -17,7 +17,9 @@ $(document).ready(function() {
       </div>
       <span class="handle">${tweet.user.handle}</span>
     </header>
+    <body>
     <span class="tweet-body">${tweet.content.text}</span>
+    <body>
     <footer>
       <span>${timeago.format(tweet.created_at)}</span>
       <span class="icons">
@@ -90,11 +92,12 @@ const tweetIsValid = (tweetText) => {
     }
   });
 
-
+  // shows/hides new tweet section
   const toggleNewTweet = () => {
     const newTweetSection = $('#new-tweet');
     if (newTweetSection.css('display') === 'none') {
       newTweetSection.slideDown();
+      newTweetSection.find('textarea').focus()
     } else {
       newTweetSection.slideUp();
     }
