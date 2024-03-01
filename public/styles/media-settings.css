@@ -1,0 +1,25 @@
+@media screen and (max-width: 1024px) {
+  
+  nav {
+    background-color: transparent;
+  }
+
+  #header_and_tweets {
+    flex-direction: column;
+  }
+
+  header.profile {
+    width: 100vw;
+    margin: 0;
+  }
+
+  #new-tweet {
+    margin: 0;
+  }
+
+  main.container {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+   }
+}

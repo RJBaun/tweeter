@@ -16,6 +16,7 @@ nav {
   align-items: center;
   font-family: "Bungee", sans-serif;
   position: fixed;
+  z-index: 1000;
 }
 
 nav i {
@@ -24,7 +25,7 @@ nav i {
   color: red;
 }
 
-nav #writeNewTweet {
+nav .writeNewTweet {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,15 +33,14 @@ nav #writeNewTweet {
   font-family: "Source Sans 3", sans-serif;
   margin: 0;
   padding: 0;
-  font-weight: 300;
 }
 
-nav #writeNewTweet span {
+nav .writeNewTweet span {
   font-weight: 600;
   font-size: 24px;
 }
 
-nav #writeNewTweet p {
+nav .writeNewTweet p {
   margin: 0.5em;
 }
 
@@ -53,7 +53,8 @@ nav button {
   align-items: center;
   justify-content: flex-start;
   width: auto;
-  height: 90px;
+  height: 4em;
   padding-bottom: 1em;
   cursor: pointer;
 }
+

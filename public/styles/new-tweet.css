@@ -1,7 +1,6 @@
 #newTweet {
-  width: 90vw;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 1.5em;
+  margin-right: 1.5em;
 }
 
 .tweet-body {
@@ -15,6 +14,7 @@
   background-color: #4056A1;
   color: #FFFFFF;
   font-family: Bungee, sans-serif;
+  cursor: pointer;
 }
 
 .tweet-details {
@@ -38,6 +38,8 @@
 .tweet-details .counter.invalid {
   color: red;
 }
+
+
 
 .tweet-error {
   border: 3px solid red;
