@@ -67,7 +67,7 @@ const tweetIsValid = (tweetText) => {
     // loads existing tweets
     const loadTweets = () => {
       $.ajax({
-        url: 'http://localhost:8080/tweets',
+        url: '/tweets',
         method: 'GET'
       })
       .then((res) => {

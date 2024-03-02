@@ -38,5 +38,6 @@ body {
   section.header_and_tweets {
     display: flex;
     flex-direction: row;
-    word-break: break-all;
+    overflow: auto;
+    word-break: break-word;
   }
