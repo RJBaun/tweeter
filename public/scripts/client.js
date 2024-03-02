@@ -39,10 +39,18 @@ const tweetIsValid = (tweetText) => {
   if(tweetText.trim() === '') {
     $('#tweet-error').html('<i class="fa-solid fa-triangle-exclamation"></i>&nbsp;&nbsp;Text field is empty!&nbsp;&nbsp;<i class="fa-solid fa-triangle-exclamation"></i>')
     $('#tweet-error').slideDown(500);
+    $('#tweet-text').focus();
+    setTimeout(() => {
+      $('#tweet-error').slideUp(500);
+    }, 3500);
     return false;
   } else if (tweetText.trim().length > 140) {
     $('#tweet-error').html('<i class="fa-solid fa-triangle-exclamation"></i>&nbsp;&nbsp;Maximum number of charaters exceeded!&nbsp;&nbsp;<i class="fa-solid fa-triangle-exclamation"></i>')
     $('#tweet-error').slideDown(500);
+    $('#tweet-text').focus();
+    setTimeout(() => {
+      $('#tweet-error').slideUp(500);
+    }, 3500);
     return false;
   }
   return true;
@@ -79,12 +87,13 @@ const tweetIsValid = (tweetText) => {
 
     if(tweetIsValid(tweetText)){
       $.ajax({
-        url:'http://localhost:8080/tweets/',
+        url:'/tweets/',
         method: 'POST',
         data: formData
       })
       .then((res) => {
         $(this).trigger('reset');
+        $('#charCounter').html(140)
         loadTweets()})
       .catch((err) => {
         console.log('Error: ', err)
@@ -103,10 +112,10 @@ const tweetIsValid = (tweetText) => {
     }
   }
 
-
+  // event listener for new-tweet toggle 
   $('#tweet-dropdown').click(toggleNewTweet)
 
-
+// fetches tweets upon page loading 
 loadTweets();
 
 
